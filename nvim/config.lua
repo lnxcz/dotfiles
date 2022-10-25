@@ -1,6 +1,5 @@
 --[[
 lvim is the global options object
-
 Linters should be
 filled in as strings with either
 a global executable or a path to
@@ -170,12 +169,25 @@ lvim.plugins = {
     branch = "cterm-compat"
   },
   {
-    "github/copilot.vim"
+    "github/copilot.vim",
+    config = function()
+      -- copilot assume mapped
+      vim.g.copilot_assume_mapped = true
+      vim.g.copilot_no_tab_map = true
+    end
+  },
+  {
+    "hrsh7th/cmp-copilot",
+    config = function()
+      lvim.builtin.cmp.formatting.source_names["copilot"] = "(Cop)"
+      table.insert(lvim.builtin.cmp.sources, { name = "copilot" })
+    end
   },
   {
     "andweeb/presence.nvim"
   }
 }
+
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
