@@ -14,6 +14,7 @@ lvim.colorscheme = "moonfly"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
+lvim.keys.normal_mode["|"] = ":vsplit<CR>"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -185,9 +186,24 @@ lvim.plugins = {
   },
   {
     "andweeb/presence.nvim"
-  }
-}
+  },
+  {
+    "wakatime/vim-wakatime"
+  },
+  {
+    "npxbr/glow.nvim",
+    ft = { "markdown" }
+    -- run = "yay -S glow"
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
 
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
